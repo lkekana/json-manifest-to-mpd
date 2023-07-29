@@ -1,1 +1,18 @@
 # json-manifest-to-mpd
+A tool to convert Json Video Manifests into Dash ones (MPEG-DASH MPD)
+
+
+#### Note
+- initially made to convert Spotify Podcast manifests into MPD to stream using your own video player. i have not tested (or found) other services but i imagine it would be similar.
+
+- it will convert Widevine DRM'd manifests but they cannot be streamed without the decryption keys.
+
+## Usage
+With python or python3 installed
+1. Clone the repository or download 'mpd.py'
+2. Copy the json manifest into 'manifest.json'
+3. `python3 mpd.py`
+4. Your completed MPD will be 'output.mpd'
+
+## Disclaimer
+I don't promote or condone the use of this for piracy.
