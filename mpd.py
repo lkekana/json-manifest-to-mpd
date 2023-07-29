@@ -333,6 +333,7 @@ timescale = segment_length_in_seconds * 1000
     ]
 }
 '''
+
 #Using Json
 # Add BaseURLS to the MPD
 if (type(obj["base_urls"]) is list):
@@ -346,44 +347,6 @@ else:
 MPD = MPD + "\t" + '<Period>' + "\n"
 
 # Find AdaptationSets (Audio, Video, Subtitles)
-''' AdaptionSet example:
-    <AdaptationSet mimeType="video/mp4" codecs="avc1.42c00d">
-
-            <!-- First Representation with its SegmentTemplate for Video -->
-            <SegmentTemplate media="video/$Number$.m4s" initialization="video/$RepresentationID1$/init.mp4" duration="4000" startNumber="0" timescale="1000"/>
-            <Representation id="180_250000" bandwidth="250000" width="320" height="180" frameRate="25"/>
-
-            <!-- Second Representation with its SegmentTemplate for Video -->
-            <SegmentTemplate media="video/$Number$.m4s" initialization="video/$RepresentationID2$/init.mp4" duration="4000" startNumber="0" timescale="1000"/>
-            <Representation id="270_400000" bandwidth="400000" width="480" height="270" frameRate="25"/>
-
-            <!-- Add more video representations here with their SegmentTemplates -->
-
-        </AdaptationSet>
-'''
-
-# Since video segment URLs usually increment by 4, we have to list all segments :(
-# Format:
-'''
-<Representation id="22" bandwidth="833508" width="640" height="360" frameRate="25">
-    <BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/dbdff182c8ea58b4aa22f93856acdc13/encodings/1576fb907a8d11ed81994be326b86994/profiles/22</BaseURL>
-    <SegmentTemplate timescale="1000" media="segment-$Number$.webm?token=%2BPCgUbIXaHgo%2FdufmjWIGeOKbfjl%2BONN%2BKFa33SkCmE%3D&amp;token_ak=st%3D1690559713%7Eexp%3D1691164513%7Eacl%3D*%2Fencodings%2F1576fb907a8d11ed81994be326b86994%2F*%7Ehmac%3D7db6216b40986f13d4124f8a48ff4577a0d608ab72d7ebf51cbfb4dc20df5045">
-        <Initialization sourceURL="v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/dbdff182c8ea58b4aa22f93856acdc13/encodings/1576fb907a8d11ed81994be326b86994/profiles/22/inits/webm?token=%2BPCgUbIXaHgo%2FdufmjWIGeOKbfjl%2BONN%2BKFa33SkCmE%3D&amp;token_ak=st%3D1690559713%7Eexp%3D1691164513%7Eacl%3D*%2Fencodings%2F1576fb907a8d11ed81994be326b86994%2F*%7Ehmac%3D7db6216b40986f13d4124f8a48ff4577a0d608ab72d7ebf51cbfb4dc20df5045"/>
-        <SegmentTimeline>
-            <!-- We define segments with their start times and durations -->
-            <!-- The first segment starts at time 0 and has a duration of 4000 time units -->
-            <S t="0" d="4000"/>
-
-            <!-- The second segment starts at time 4000 and also has a duration of 4000 time units -->
-            <S t="4000" d="4000"/>
-
-            <!-- The third segment starts at time 8000 and has a duration of 4000 time units -->
-            <S t="8000" d="4000"/>
-            <!-- ... add more segments here if necessary -->
-        </SegmentTimeline>
-    </SegmentTemplate>
-</Representation>'''
-
 # Video first
 profiles = obj["contents"][0]["profiles"]
 codecs = []
@@ -397,26 +360,6 @@ unique_codecs = list(set(codecs))
 for codec in unique_codecs:
     MPD = MPD + "\t\t" + '<AdaptationSet mimeType="' + codec[0] + '" codecs="' + codec[1] + '">' + "\n"
     for profile in profiles:
-        # Method 1
-        '''
-        if (codec[0] == profile["mime_type"] and codec[1] == profile["video_codec"]):
-            media = obj["segment_template"].replace("{{file_type}}", profile["file_type"]).replace("{{profile_id}}", profile["id"])
-            media = media.replace("{{segment_timestamp}}", "$Number$")
-            MPD = MPD + "\t\t" + '<SegmentTemplate media="' + media + '" initialization="' + obj["initialization_template"].replace("{{file_type}}", profile["file_type"]).replace("{{profile_id}}", profile["id"]) + '" duration="' + 4000 + '" startNumber="0" timescale="1000"/>' + "\n"
-            MPD = MPD + "\t\t" + '<Representation id="' + profile["id"] + '" bandwidth="' + profile["max_bitrate"] + '" width="' + profile["video_width"] + '" height="' + profile["video_height"] + '" frameRate="25"/>' + "\n"
-        '''
-        # Method 2
-        '''
-        if (codec[0] == profile["mime_type"] and codec[1] == profile["video_codec"]):
-            media = str(obj["segment_template"]).replace("{{file_type}}", str(profile["file_type"])).replace("{{profile_id}}", str(profile["id"]))
-            media = media.replace("{{segment_timestamp}}", "$Time$")
-            media = media.replace("&", "&amp;")
-            init = str(obj["initialization_template"]).replace("{{file_type}}", str(profile["file_type"])).replace("{{profile_id}}", str(profile["id"]))
-            init = init.replace("&", "&amp;")
-            MPD = MPD + "\t\t\t" + '<SegmentTemplate media="' + media + '" initialization="' + init + '" duration="' + str(segment_length_in_milliseconds) + '" startNumber="0" timescale="' + str(timescale) + '"/>' + "\n"
-            MPD = MPD + "\t\t\t" + '<Representation id="' + str(profile["id"]) + '" bandwidth="' + str(profile["max_bitrate"]) + '" width="' + str(profile["video_width"]) + '" height="' + str(profile["video_height"]) + '" frameRate="25"/>' + "\n"
-        '''
-
         # Proper method to include SegmentTimeline
         if (codec[0] == profile["mime_type"] and codec[1] == profile["video_codec"]):
             print("Adding video profile " + str(profile["id"]) + " to MPD")
@@ -442,28 +385,6 @@ for codec in unique_codecs:
             media = media.replace("{{segment_timestamp}}", "$Time$")
             # MPD = MPD + "\t\t\t\t" + '<SegmentTemplate timescale="1000" media="' + media + '">' + "\n"
             MPD = MPD + "\t\t\t\t" + '<SegmentTemplate media="' + media + '" initialization="' + init + '" duration="' + str(segment_length_in_milliseconds) + '" startNumber="0" timescale="' + str(timescale) + '">' + "\n"
-
-
-            '''
-            MPD = MPD + "\t\t\t\t\t" + '<SegmentTimeline>' + "\n"
-            i = 0
-            while i < duration_in_seconds:
-                MPD = MPD + "\t\t\t\t\t\t" + '<S t="' + str(i * 1000) + '" d="' + str(segment_length_in_milliseconds) + '"/>' + "\n"
-                i = i + segment_length_in_seconds
-            MPD = MPD + "\t\t\t\t\t" + '</SegmentTimeline>' + "\n"
-            '''
-
-            '''
-            MPD = MPD + "\t\t\t" + '<SegmentList timescale="1000" duration="' + str(segment_length_in_milliseconds) + '">' + "\n"
-            MPD = MPD + "\t\t\t\t<!-- Segment URLs -->" + "\n"
-            i = 0
-            while i < duration_in_seconds:
-                segmentURL = media.replace("{{segment_timestamp}}", str(i))
-                MPD = MPD + "\t\t\t\t" + '<SegmentURL media="' + segmentURL + '"/>' + "\n"
-                i = i + segment_length_in_seconds
-
-            MPD = MPD + "\t\t\t" + '</SegmentList>' + "\n\n"
-            '''
 
             #Final Segment Timeline format
             '''
@@ -492,17 +413,6 @@ unique_codecs = list(set(codecs))
 for codec in unique_codecs:
     MPD = MPD + "\t\t" + '<AdaptationSet mimeType="' + codec[0] + '" codecs="' + codec[1] + '">' + "\n"
     for profile in profiles:
-        '''
-        if (codec[0] == profile["mime_type"] and codec[1] == profile["audio_codec"]):
-            media = str(obj["segment_template"]).replace("{{file_type}}", str(profile["file_type"])).replace("{{profile_id}}", str(profile["id"]))
-            media = media.replace("{{segment_timestamp}}", "$Time$")
-            media = media.replace("&", "&amp;")
-            init = str(obj["initialization_template"]).replace("{{file_type}}", str(profile["file_type"])).replace("{{profile_id}}", str(profile["id"]))
-            init = init.replace("&", "&amp;")
-            MPD = MPD + "\t\t\t" + '<SegmentTemplate media="' + media + '" initialization="' + init + '" duration="' + str(segment_length_in_milliseconds) + '" startNumber="0" timescale="' + str(timescale) + '"/>' + "\n"
-            # <Representation id="1_stereo_192000" bandwidth="192000" audioSamplingRate="48000/"/>
-            MPD = MPD + "\t\t\t" + '<Representation id="' + str(profile["id"]) + '" bandwidth="' + str(profile["max_bitrate"]) + '"/>' + "\n"
-        '''
         if (codec[0] == profile["mime_type"] and codec[1] == profile["audio_codec"]):
             print("Adding audio profile " + str(profile["id"]) + " to MPD")
             MPD = MPD + "\t\t\t" + '<Representation id="' + str(profile["id"]) + '" bandwidth="' + str(profile["max_bitrate"]) + '">' + "\n"
