@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns="urn:mpeg:dash:schema:mpd:2011"
-     xsi:schemaLocation="urn:mpeg:DASH:schema:MPD:2011 DASH-MPD.xsd"
-     type="static"
-     mediaPresentationDuration="PT5932.521000S"
-     profiles="urn:mpeg:dash:profile:isoff-on-demand:2011">
+    <MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="urn:mpeg:dash:schema:mpd:2011"
+        xsi:schemaLocation="urn:mpeg:DASH:schema:MPD:2011 DASH-MPD.xsd"
+        type="static"
+        mediaPresentationDuration="PT5932.521000S"
+        profiles="urn:mpeg:dash:profile:isoff-on-demand:2011">
 	<BaseURL>https://video-akpcw-cdn-spotify-com.akamaized.net/segments/</BaseURL>
 	<BaseURL>https://video-fa.scdn.co/segments/</BaseURL>
 	<Period>
-		<AdaptationSet mimeType="video/mp4" codecs="avc1.4d4015">
-			<Representation id="16" bandwidth="612914" width="426" height="240" frameRate="25">
-				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/16/</BaseURL>
+		<AdaptationSet mimeType="video/mp4" codecs="avc1.4d401f">
+			<Representation id="14" bandwidth="1226104" width="854" height="480" frameRate="25">
+				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/14/</BaseURL>
+				<SegmentTemplate media="$Time$.mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" initialization="inits/mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" duration="4000" startNumber="0" timescale="4000">
+					<SegmentTimeline>
+						<S t="0" d="4" r="1483"/>
+					</SegmentTimeline>
+				</SegmentTemplate>
+			</Representation>
+			<Representation id="13" bandwidth="1815994" width="854" height="480" frameRate="25">
+				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/13/</BaseURL>
 				<SegmentTemplate media="$Time$.mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" initialization="inits/mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" duration="4000" startNumber="0" timescale="4000">
 					<SegmentTimeline>
 						<S t="0" d="4" r="1483"/>
@@ -41,6 +49,28 @@
 			</Representation>
 		</AdaptationSet>
 
+		<AdaptationSet mimeType="video/mp4" codecs="avc1.4d402a">
+			<Representation id="10" bandwidth="4274814" width="1920" height="1080" frameRate="25">
+				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/10/</BaseURL>
+				<SegmentTemplate media="$Time$.mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" initialization="inits/mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" duration="4000" startNumber="0" timescale="4000">
+					<SegmentTimeline>
+						<S t="0" d="4" r="1483"/>
+					</SegmentTimeline>
+				</SegmentTemplate>
+			</Representation>
+		</AdaptationSet>
+
+		<AdaptationSet mimeType="video/mp4" codecs="avc1.4d4015">
+			<Representation id="16" bandwidth="612914" width="426" height="240" frameRate="25">
+				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/16/</BaseURL>
+				<SegmentTemplate media="$Time$.mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" initialization="inits/mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" duration="4000" startNumber="0" timescale="4000">
+					<SegmentTimeline>
+						<S t="0" d="4" r="1483"/>
+					</SegmentTimeline>
+				</SegmentTemplate>
+			</Representation>
+		</AdaptationSet>
+
 		<AdaptationSet mimeType="video/mp4" codecs="avc1.4d4020">
 			<Representation id="12" bandwidth="2363762" width="1280" height="720" frameRate="25">
 				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/12/</BaseURL>
@@ -52,36 +82,6 @@
 			</Representation>
 			<Representation id="11" bandwidth="2911884" width="1280" height="720" frameRate="25">
 				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/11/</BaseURL>
-				<SegmentTemplate media="$Time$.mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" initialization="inits/mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" duration="4000" startNumber="0" timescale="4000">
-					<SegmentTimeline>
-						<S t="0" d="4" r="1483"/>
-					</SegmentTimeline>
-				</SegmentTemplate>
-			</Representation>
-		</AdaptationSet>
-
-		<AdaptationSet mimeType="video/mp4" codecs="avc1.4d401f">
-			<Representation id="14" bandwidth="1226104" width="854" height="480" frameRate="25">
-				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/14/</BaseURL>
-				<SegmentTemplate media="$Time$.mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" initialization="inits/mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" duration="4000" startNumber="0" timescale="4000">
-					<SegmentTimeline>
-						<S t="0" d="4" r="1483"/>
-					</SegmentTimeline>
-				</SegmentTemplate>
-			</Representation>
-			<Representation id="13" bandwidth="1815994" width="854" height="480" frameRate="25">
-				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/13/</BaseURL>
-				<SegmentTemplate media="$Time$.mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" initialization="inits/mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" duration="4000" startNumber="0" timescale="4000">
-					<SegmentTimeline>
-						<S t="0" d="4" r="1483"/>
-					</SegmentTimeline>
-				</SegmentTemplate>
-			</Representation>
-		</AdaptationSet>
-
-		<AdaptationSet mimeType="video/mp4" codecs="avc1.4d402a">
-			<Representation id="10" bandwidth="4274814" width="1920" height="1080" frameRate="25">
-				<BaseURL>v1/origins/b1acc6dba4d449dcf7a71659d3fabea2/sources/427982abbd2250f381b28ec1e9176cf5/encodings/c1c9e230534b11ee9f631564fe492e34/profiles/10/</BaseURL>
 				<SegmentTemplate media="$Time$.mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" initialization="inits/mp4?token=n2xq0lC8KA4fHX0Z8iKNY1Ym%2BBrdCS33KWs02MM0Z10%3D&amp;token_ak=st%3D1694947711%7Eexp%3D1695552511%7Eacl%3D*%2Fencodings%2Fc1c9e230534b11ee9f631564fe492e34%2F*%7Ehmac%3D382ec9c4ab0dbfffd19689f6a4f19d8cecd73f800b3f5ebe12a60aa7b28e47b3" duration="4000" startNumber="0" timescale="4000">
 					<SegmentTimeline>
 						<S t="0" d="4" r="1483"/>
