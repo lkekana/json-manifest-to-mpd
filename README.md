@@ -15,12 +15,12 @@ With python or python3 installed
 4. Your completed MPD will be 'output.mpd'
 
 ## To-do
-- Allow for input and output files to be specified with arguments
-- Allow for choosing video, audio or sub only
-- Allow for lowest bitrate only
-- Allow for highest bitrate only
-- Allow for avc or vp9 only
-- Allow print MPD only
+- [ ] Allow for input and output files to be specified with arguments
+- [ ] Allow for choosing video, audio or sub only
+- [ ] Allow for lowest bitrate only
+- [ ] Allow for highest bitrate only
+- [ ] Allow for avc or vp9 only
+- [ ] Allow print MPD only
 
 ## Disclaimer
 I don't promote or condone the use of this for piracy.
